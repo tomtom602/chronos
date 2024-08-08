@@ -6,12 +6,12 @@ ENV TZ=GMT
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Add yarn to apt
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN curl -sS --insecure https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Install common packages
 RUN apt-get update
-RUN pip install cython
+RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org cython
 RUN apt-get install -y freetds-dev
 RUN pip install pymssql
 
