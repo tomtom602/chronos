@@ -16,7 +16,7 @@ RUN apt-get install -y freetds-dev
 RUN pip install pymssql
 
 # Install Node and Yarn
-RUN apt-get install -y nodejs yarn
+RUN apt-get install -y nodejs yarn poppler-utils
 
 # Copy Chronos to image
 COPY . /app/chronos
